@@ -207,7 +207,6 @@ void loop() {
     telFile = SD.open("teletes.txt", FILE_WRITE); //This opens/creates a file to send data to
     telFile.print(lateralForce);telFile.print(",");Serial.println(maxGL); //Prints this text or variable SD.
     telFile.print(zGForce);telFile.print(",");Serial.println(maxGZ); //Prints this text or variable SD.
-    //telFile.println(maxGD); //Prints this text or variable SD.
     telFile.close(); //Closes after save, if this isn't done data may not be saved
 }
 

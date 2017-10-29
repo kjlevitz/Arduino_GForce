@@ -1,3 +1,14 @@
+//Created by K. Levitz with the below Arduino Librarys.
+//Used for Temple's Formula SAE team display G-Force on a small LED display and to log GForces to an SD.
+
+//Parts used;
+//Arduino Mega (Due to the size of libraries you need a Mega)
+//I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of SDA/SCL on Mega or use circuit, 3v power)
+//GY-521 MPU-6050 (Gyro) (Plug into 2nd set of SDA/SCL on Mega or use circuit, 5v power)
+//SD Card Micro SDHC Mini TF (SD Reader)(GND -> GND, VCC -> 5v, MISO -> 50, MOSI -> 51, SCK -> 52, CS -> 53)
+//Note: If you are not using a circiut you can use the 2nd 5v power from the Arduino's ICSP. Do not use it the ICSP ground though because it will prevent startup.)
+
+
 //Init Librarys
 
 #include "I2Cdev.h" //I2C library
@@ -47,10 +58,11 @@ static const unsigned char PROGMEM logo16_glcd_bmp[] =
 //OLED END
 
 
-//SD Start
+//SD Start. Simply comment out all SD lines if you do not have an SD reader. Otherwise, the program will not work without SD reader.
 
 double pinCS = 53; // SD bus
 File telFile; //SD save file
+
 
 //Declare Variables, declaring g force values to use in calculations
 
@@ -63,7 +75,7 @@ float zGForce; //Used for Z Axis G Force
 
 MPU6050 mpu; //Gyro
 
-//MPU6050 accelgyro(0x68); //Used to define I2C Gyro address.
+//MPU6050 accelgyro(0x68); //Used to define I2C Gyro address if needed. This is not a common requirement.
 
 
 //Gyro Calibration
@@ -76,7 +88,7 @@ void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); //Init display and call i2c port
   pinMode(pinCS, OUTPUT); //SD Pin setup pin 53
 
-  if (SD.begin()) //Statement reports if card was found.
+  if (SD.begin()) //Statement reports if card was found. This will prevent the program from running is no SD reader/SD card was detected.
   {
     Serial.println("SD card initialized"); //Found
     
@@ -87,7 +99,7 @@ void setup() {
   }
 
 
-  // Initialize MPU6050
+  // Initialize MPU6050 (Gyro)
 
   Serial.println("Initialize MPU6050");
   while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
@@ -202,11 +214,11 @@ void loop() {
 
   // SD Card data logging, logs if G Force is greater than 0.25 on any axis.
 
-  if (lateralForce > 0.25 || zGForce > 0.25)
+  if (lateralForce > 0.25 || zGForce > 0.25) //If you do not have an SD card reader comment out or remove these lines.
 {
     telFile = SD.open("teletes.txt", FILE_WRITE); //This opens/creates a file to send data to
-    telFile.print("Gf: ");telFile.print(lateralForce);telFile.print(", ");telFile.print("MGf: ");telFile.println(maxGL); //Prints this text or variable SD.
-    telFile.print("Z: ");telFile.print(zGForce);telFile.print(", ");telFile.print("ZM: ");telFile.print(maxGZ);telFile.println(", "); //Prints this text or variable SD.
+    telFile.print("Gf: ");telFile.print(lateralForce);telFile.print(", ");telFile.print("MGf: ");telFile.println(maxGL); //Prints this text or variable to SD.
+    telFile.print("Z: ");telFile.print(zGForce);telFile.print(", ");telFile.print("ZM: ");telFile.print(maxGZ);telFile.println(", "); //Prints this text or variable to SD.
     telFile.close(); //Closes after save, if this isn't done data may not be saved
 }
 

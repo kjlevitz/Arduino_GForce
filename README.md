@@ -21,4 +21,16 @@ I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of S
 GY-521 MPU-6050 (Gyro) (Plug into 2nd set of SDA/SCL on Mega or use circuit, 5v power)  
 SD Card Micro SDHC Mini TF (SD Reader)(GND -> GND, VCC -> 5v, MISO -> 50, MOSI -> 51, SCK -> 52, CS -> 53)  
 Note: If you are not using a circiut you can use the 2nd 5v power from the Arduino's ICSP. Do not use it the ICSP ground though because it will prevent startup.)  
- 
+  
+Reference code was used for Gyro Setup and Void function.  
+Created by Korneliusz Jarzebski's free_fall program released under GNU license.  
+https://github.com/jarzebski/Arduino-MPU6050  
+https://github.com/jarzebski/Arduino-MPU6050/blob/master/MPU6050_free_fall/MPU6050_free_fall.ino (GNU License)  
+  
+Libaries used; (All credit goes to orignal authors of these libraries.)  
+I2Cdev.h //I2C library https://github.com/jrowberg/i2cdevlib/blob/master/Arduino/I2Cdev/I2Cdev.h   
+MPU6050.h //Gyro Library https://github.com/jrowberg/i2cdevlib/blob/master/Arduino/MPU6050/MPU6050.h  
+SPI.h //OLED Library https://www.arduino.cc/en/Reference/SPI  
+SD.h //SD Library https://www.arduino.cc/en/Reference/SD  
+Adafruit_GFX.h //OLED Library https://github.com/adafruit/Adafruit-GFX-Library  
+Adafruit_SSD1306.h //OLED Library https://github.com/adafruit/Adafruit_SSD1306  

@@ -14,10 +14,11 @@ Arduino project created to record G Force levels on X, Y and Z planes and record
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     
-Used for Student SAE race team to display G-Force to small LED and to log detailed information to SD card.
-Parts used;
-Arduino Mega (Due to the size of libraries you need a Mega)
-I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of SDA/SCL on Mega or use circuit, 3v power)
-GY-521 MPU-6050 (Gyro) (Plug into 2nd set of SDA/SCL on Mega or use circuit, 5v power)
-SD Card Micro SDHC Mini TF (SD Reader)(GND -> GND, VCC -> 5v, MISO -> 50, MOSI -> 51, SCK -> 52, CS -> 53)
-Note: If you are not using a circiut you can use the 2nd 5v power from the Arduino's ICSP. Do not use it the ICSP ground though because it will prevent startup.)
+Used for Student SAE race team to display G-Force to small LED and to log detailed information to SD card.  
+Parts used;  
+Arduino Mega (Due to the size of libraries you need a Mega)  
+I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of SDA/SCL on Mega or use circuit, 3v power)  
+GY-521 MPU-6050 (Gyro) (Plug into 2nd set of SDA/SCL on Mega or use circuit, 5v power)  
+SD Card Micro SDHC Mini TF (SD Reader)(GND -> GND, VCC -> 5v, MISO -> 50, MOSI -> 51, SCK -> 52, CS -> 53)  
+Note: If you are not using a circiut you can use the 2nd 5v power from the Arduino's ICSP. Do not use it the ICSP ground though because it will prevent startup.)  
+ 

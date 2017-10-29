@@ -19,6 +19,10 @@
 
 Used for Student SAE race team to display G-Force to small LED and to log detailed information to SD card.
 
+Reference code used for Gyro Setup and Void is from Korneliusz Jarzebski's free_fall program released under GNU license.
+https://github.com/jarzebski/Arduino-MPU6050/blob/master/MPU6050_free_fall/MPU6050_free_fall.ino (GNU License)
+
+
 Parts used;
 Arduino Mega (Due to the size of libraries you need a Mega)
 I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of SDA/SCL on Mega or use circuit, 3v power)
@@ -118,7 +122,8 @@ void setup() {
   }
 
 
-  // Initialize MPU6050 (Gyro)
+  // Initialize MPU6050 (Gyro) 
+  // The following code is the work of Korneliusz Jarzebski, www.jarzebski.pl, released under GNU license.
 
   Serial.println("Initialize MPU6050");
   while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
@@ -127,7 +132,9 @@ void setup() {
     delay(500);
   }
 
+  //End K. Jarzebski reference code.
 
+    
   //Auto Calibration
   
   mpu.calibrateGyro(); // Auto Calibrates sensor.

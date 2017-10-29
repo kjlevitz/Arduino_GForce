@@ -1,6 +1,3 @@
-//Created by K. Levitz with the below Arduino Librarys.
-//Used for Temple's Formula SAE team display G-Force on a small LED display and to log GForces to an SD.
-
 //Parts used;
 //Arduino Mega (Due to the size of libraries you need a Mega)
 //I2C IIC Serial 128x64 OLED SSD1306 Display (LED Display) (Plug into 1st set of SDA/SCL on Mega or use circuit, 3v power)

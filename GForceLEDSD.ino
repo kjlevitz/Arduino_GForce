@@ -209,8 +209,8 @@ void loop() {
   
   //Calculating G Force
   
-  lateralForce = (sqrt(rawAccel.XAxis * rawAccel.XAxis + rawAccel.YAxis * rawAccel.YAxis)/17000); //This is working
-  zGForce = abs(rawAccel.ZAxis / 17000); //This is working
+  lateralForce = (sqrt(rawAccel.XAxis * rawAccel.XAxis + rawAccel.YAxis * rawAccel.YAxis)/17000);
+  zGForce = abs(rawAccel.ZAxis / 17000);
 
 
   //Max G Force logic
